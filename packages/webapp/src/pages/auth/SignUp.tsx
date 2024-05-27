@@ -15,7 +15,7 @@ const SignUp = () => {
 
   async function handleFinish(values: any) {
     await AuthService.signUp(values)
-    router.redirect(nextURL)
+    // router.redirect(nextURL)
   }
 
   return (

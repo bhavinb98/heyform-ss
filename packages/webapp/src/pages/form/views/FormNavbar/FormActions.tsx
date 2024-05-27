@@ -38,10 +38,20 @@ export const FormActions = observer(() => {
         active: true
       })
       appStore.isFormShareModalOpen = true
+
+      await FormService.createThirdPartySurvey(formStore.current!.id, formStore.current!.name, formStore.current!)
     } catch (err: any) {
       notification.error({
-        title: 'Failed to publish form'
+        title: 'Failed to publish form',
       })
+      await FormService.update(formStore.current!.id, {
+        active: false
+      })
+
+      formStore.updateSettings({
+        active: false
+      })
+      appStore.isFormShareModalOpen = false
     }
 
     setLoading(false)

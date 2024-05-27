@@ -20,3 +20,9 @@ export const VERIFY_USER_EMAIL = helper.isTrue(
 export const APP_DISABLE_REGISTRATION = helper.isTrue(
   window.heyform?.appDisableRegistration || import.meta.env.VITE_APP_DISABLE_REGISTRATION
 )
+
+// Third Party
+export const THIRD_PARTY_CREATE_SURVEY =  import.meta.env.VITE_CREATE_SURVEY_URL
+export const TEST_THIRD_PARTY_CREATE_SURVEY = import.meta.env.VITE_TEST_CREATE_SURVEY_URL
+export const THIRD_PARTY_CREATE_SUBMISSION = import.meta.env.VITE_CREATE_SUBMISSION_URL
+export const THIRD_PARTY_TEST_CREATE_SUBMISSION = import.meta.env.VITE_TEST_CREATE_SUBMISSION_URL

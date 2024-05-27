@@ -14,11 +14,11 @@ export const Navigation = () => {
       label: t('form.create'),
       icon: IconEdit
     },
-    {
-      to: `/workspace/${workspaceId}/project/${projectId}/form/${formId}/connect`,
-      label: t('form.connect'),
-      icon: IconBolt
-    },
+    // {
+    //   to: `/workspace/${workspaceId}/project/${projectId}/form/${formId}/connect`,
+    //   label: t('form.connect'),
+    //   icon: IconBolt
+    // },
     {
       to: `/workspace/${workspaceId}/project/${projectId}/form/${formId}/analytics`,
       label: t('form.analytics'),
@@ -29,11 +29,11 @@ export const Navigation = () => {
       label: t('form.submissions'),
       icon: IconDatabase
     },
-    {
-      to: `/workspace/${workspaceId}/project/${projectId}/form/${formId}/settings`,
-      label: t('form.settings'),
-      icon: IconSettings
-    }
+    // {
+    //   to: `/workspace/${workspaceId}/project/${projectId}/form/${formId}/settings`,
+    //   label: t('form.settings'),
+    //   icon: IconSettings
+    // }
   ]
 
   return (

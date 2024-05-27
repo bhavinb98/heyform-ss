@@ -43,7 +43,7 @@ export const ThankYou: FC<IBasicProps> = ({ field }) => {
 
   return (
     <div className="right-sidebar-settings-item">
-      <SwitchField
+      {/* <SwitchField
         label={t('formBuilder.redirect')}
         value={field.properties?.redirectOnCompletion}
         onChange={handleEnableCallback}
@@ -56,7 +56,7 @@ export const ThankYou: FC<IBasicProps> = ({ field }) => {
           value={field.properties?.redirectUrl}
           onChange={handleUrlChangeCallback}
         />
-      )}
+      )} */}
     </div>
   )
 }

@@ -54,11 +54,11 @@ export class CreateFormResolver {
         {
           id: nanoid(12),
           title: ['Thank you!'],
-          description: ['Thanks for completing this form. Now create your own form.'],
+          description: ['Thanks for completing this form.'],
           kind: FieldKindEnum.THANK_YOU
         }
       ],
-      hiddenFields: [],
+      hiddenFields: [{id: "1", name: "user_id"}, {id: "2", name: "submission_uuid"}],
       draft: true,
       status: FormStatusEnum.NORMAL,
       ...input

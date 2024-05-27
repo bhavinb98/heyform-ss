@@ -26,17 +26,23 @@ export const HiddenFieldCard: FC<HiddenFieldCardProps> = ({ field, onEdit }) => 
     setLoading(true)
 
     try {
-      await FormService.deleteHiddenField({
-        formId,
-        fieldId: field.id
-      })
-
-      dispatch({
-        type: 'deleteHiddenField',
-        payload: {
-          id: field.id
-        }
-      })
+      if (field.id == "1" || field.id == "2") {
+        notification.error({
+          title: "Deletion of this field is not allowed."
+        })
+      } else {
+        await FormService.deleteHiddenField({
+          formId,
+          fieldId: field.id
+        })
+  
+        dispatch({
+          type: 'deleteHiddenField',
+          payload: {
+            id: field.id
+          }
+        })
+      }
     } catch (err: any) {
       notification.error({
         title: err.message
@@ -49,7 +55,13 @@ export const HiddenFieldCard: FC<HiddenFieldCardProps> = ({ field, onEdit }) => 
   function handleMenuClick(name?: IKeyType) {
     switch (name) {
       case 'edit':
-        onEdit(field)
+        if (field.id == "1" || field.id == "2") {
+          notification.error({
+            title: "This field cannot be edited."
+          })
+        } else {
+          onEdit(field)
+        }
         break
 
       case 'delete':

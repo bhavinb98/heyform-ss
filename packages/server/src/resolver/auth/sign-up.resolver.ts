@@ -4,7 +4,7 @@ import { Args, Query, Resolver } from '@nestjs/graphql'
 import { helper } from '@heyform-inc/utils'
 
 import { GraphqlRequest, GraphqlResponse } from '@decorator'
-import { APP_DISABLE_REGISTRATION, BCRYPT_SALT, VERIFY_USER_EMAIL } from '@environments'
+import { APP_DISABLE_REGISTRATION, BCRYPT_SALT } from '@environments'
 import { SignUpInput } from '@graphql'
 import { BrowserIdGuard } from '@guard'
 import { AuthService, UserService } from '@service'
@@ -50,7 +50,8 @@ export class SignUpResolver {
       avatar: gravatar(input.email),
       lang: client.lang,
       // Setup SMTP if you want to verify user's email address
-      isEmailVerified: !VERIFY_USER_EMAIL
+      // isEmailVerified: !VERIFY_USER_EMAIL
+      isEmailVerified: true
     })
 
     await this.authService.login({

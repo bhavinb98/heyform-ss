@@ -96,7 +96,7 @@ export const FormShareModal = observer(() => {
           </button>
         </div>
 
-        <div className="flex items-center gap-2">
+        {/* <div className="flex items-center gap-2">
           <Tooltip ariaLabel="Share on X">
             <div>
               <Button.Link
@@ -132,18 +132,18 @@ export const FormShareModal = observer(() => {
               />
             </div>
           </Tooltip>
-        </div>
+        </div> */}
 
         <div>
           <div className="mb-1 flex items-center justify-between text-sm">
             <span className="font-medium">Share link</span>
-            <div className="flex items-center gap-1">
+            {/* <div className="flex items-center gap-1">
               <NavLink
                 to={`/workspace/${workspaceId}/project/${projectId}/form/${formId}/settings#form-settings-protection`}
               >
                 Password protection
               </NavLink>
-            </div>
+            </div> */}
           </div>
           <div className="relative">
             <div className="h-10 rounded-lg border border-slate-200 px-3 leading-10">
@@ -153,7 +153,7 @@ export const FormShareModal = observer(() => {
           </div>
         </div>
 
-        <div>
+        {/* <div>
           <div className="mb-1 text-sm font-medium">Embed form</div>
           <div className="mb-4 text-sm text-slate-600">
             Use these options to embed your form into your own website.
@@ -169,7 +169,7 @@ export const FormShareModal = observer(() => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </Modal>
   )

@@ -5,7 +5,6 @@ import { Button, Tooltip } from '@/components/ui'
 
 import { useStore } from '../store'
 import { useTranslation } from '../utils'
-import { Branding } from './Branding'
 
 export const Footer: FC = () => {
   const { state, dispatch } = useStore()
@@ -35,7 +34,7 @@ export const Footer: FC = () => {
 
         <div className="heyform-footer-right">
           <div className="heyform-pagination">
-            <Tooltip ariaLabel={t('Questions')} placement="top">
+            {/* <Tooltip ariaLabel={t('Questions')} placement="top">
               <div>
                 <Button.Link
                   className="heyform-sidebar-toggle"
@@ -43,9 +42,9 @@ export const Footer: FC = () => {
                   onClick={handleToggleSidebar}
                 />
               </div>
-            </Tooltip>
+            </Tooltip> */}
 
-            <Tooltip ariaLabel={t('Previous question')} placement="top">
+            {/* <Tooltip ariaLabel={t('Previous question')} placement="top">
               <div>
                 <Button.Link
                   className="heyform-pagination-previous"
@@ -67,10 +66,8 @@ export const Footer: FC = () => {
                   onClick={handleNext}
                 />
               </div>
-            </Tooltip>
+            </Tooltip> */}
           </div>
-
-          <Branding />
         </div>
       </div>
     </div>

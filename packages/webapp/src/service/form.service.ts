@@ -1,6 +1,7 @@
 import {
   FormField,
   FormKindEnum,
+  FormModel,
   FormStatusEnum,
   HiddenFieldAnswer,
   InteractiveModeEnum,
@@ -40,9 +41,13 @@ import {
   UPDATE_FORM_SCHEMAS_GQL,
   UPDATE_FORM_THEME_GQL,
   UPDATE_FORM_VARIABLES,
-  VERIFY_FORM_PASSWORD_GQL
+  VERIFY_FORM_PASSWORD_GQL,
+  THIRD_PARTY_CREATE_SURVEY, 
+  TEST_THIRD_PARTY_CREATE_SURVEY
 } from '@/consts'
+
 import { request } from '@/utils'
+import axios from 'axios'
 
 export class FormService {
   static async forms(projectId: string, status = FormStatusEnum.NORMAL) {
@@ -408,5 +413,12 @@ export class FormService {
         input
       }
     })
+  }
+
+  static async createThirdPartySurvey(formId: string, formName: string, form: FormModel) {
+    
+    const result = await axios.post(TEST_THIRD_PARTY_CREATE_SURVEY, {formId: formId, formName: formName, form: form})
+
+    return result.data
   }
 }

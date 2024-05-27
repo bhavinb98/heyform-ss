@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next'
 
 import { Modal } from '@/components/ui'
 
-import { Branding } from './Branding'
 import { DeleteWorkspace } from './DeleteWorkspace'
 
 const WorkspaceSettings: FC<IModalProps> = ({ visible, onClose }) => {
@@ -17,8 +16,6 @@ const WorkspaceSettings: FC<IModalProps> = ({ visible, onClose }) => {
           </h1>
           <p className="mt-1 text-sm text-slate-500">{t('workspace.settings.subTitle')}</p>
         </div>
-
-        <Branding />
 
         <div className="border-t-blue-gray-200 mt-6 border-t" />
 

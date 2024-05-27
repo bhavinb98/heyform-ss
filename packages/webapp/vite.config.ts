@@ -56,8 +56,8 @@ export default () => ({
 		}
 	},
 	server: {
-		port: 3000,
-		open: 'http://127.0.0.1:3000',
+		port: 5200,
+		open: 'http://127.0.0.1:5200',
 		proxy: {
 			'/graphql': PROXY_CONFIG,
 			'/upload': PROXY_CONFIG,

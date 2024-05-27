@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    async function heyformLogin () {
+        let HEYFORM_URL = window.location.origin
+        let current_admin = {email: "bhavin@test.com", heyform_password: "Test@123"}
+        let response = await fetch(`${HEYFORM_URL}/graphql`, {
+        "headers": {
+            "accept": "*/*",
+            "accept-language": "en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7",
+            "content-type": "application/json",
+            "priority": "u=1, i",
+            "sec-ch-ua": "\"Google Chrome\";v=\"125\", \"Chromium\";v=\"125\", \"Not.A/Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"macOS\"",
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "same-origin",
+            "x-anonymous-id": "AFNsklEz7Jr8",
+            "x-browser-id": "AFNsklEz7Jr8"
+        },
+        "referrer": `${HEYFORM_URL}/login?redirect_uri=%2F`,
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "body": `{\"operationName\":\"login\",\"variables\":{\"input\":{\"email\":\"${current_admin.email}\",\"password\":\"${current_admin.heyform_password}\"}},\"query\":\"query login($input: LoginInput!) {\\n  login(input: $input)\\n}\\n\"}`,
+        "method": "POST",
+        "mode": "cors",
+        "credentials": "include"
+        });
+
+        let responseJson = await response.json();
+        console.log("1st Request - ", responseJson);
+        
+        let response2 = await fetch(`${HEYFORM_URL}/graphql`, {
+            "credentials": "include",
+            "headers": {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Gecko/20100101 Firefox/126.0",
+                "Accept": "*/*",
+                "Accept-Language": "en-US,en;q=0.5",
+                "content-type": "application/json",
+                "x-browser-id": "wgrQRGnAIBlr",
+                "x-anonymous-id": "wgrQRGnAIBlr",
+                "Sec-GPC": "1",
+                "Sec-Fetch-Dest": "empty",
+                "Sec-Fetch-Mode": "cors",
+                "Sec-Fetch-Site": "same-origin",
+                "Priority": "u=4"
+            },
+            "referrer": `${HEYFORM_URL}`,
+            "body": "{\"operationName\":\"teams\",\"variables\":{},\"query\":\"query teams {\\n  teams {\\n    id\\n    name\\n    ownerId\\n    avatar\\n    storageQuota\\n    memberCount\\n    isOwner\\n    inviteCode\\n    inviteCodeExpireAt\\n    createdAt\\n    projects {\\n      id\\n      teamId\\n      name\\n      ownerId\\n      icon\\n      members\\n      formCount\\n      isOwner\\n    }\\n  }\\n}\\n\"}",
+            "method": "POST",
+            "mode": "cors"
+        });
+
+        let response2Json = await response2.json();
+        let teamID = response2Json.id;
+        console.log("2nd Request - ", response2Json);
+
+        let response3 = await fetch(`${HEYFORM_URL}/graphql`, {
+            "credentials": "include",
+            "headers": {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Gecko/20100101 Firefox/126.0",
+                "Accept": "*/*",
+                "Accept-Language": "en-US,en;q=0.5",
+                "content-type": "application/json",
+                "x-browser-id": "wgrQRGnAIBlr",
+                "x-anonymous-id": "wgrQRGnAIBlr",
+                "Sec-GPC": "1",
+                "Sec-Fetch-Dest": "empty",
+                "Sec-Fetch-Mode": "cors",
+                "Sec-Fetch-Site": "same-origin",
+                "Priority": "u=4"
+            },
+            "referrer": `${HEYFORM_URL}`,
+            "body": "{\"operationName\":\"userDetail\",\"variables\":{},\"query\":\"query userDetail {\\n  userDetail {\\n    id\\n    name\\n    email\\n    avatar\\n    lang\\n    isEmailVerified\\n    isSocialAccount\\n    isDeletionScheduled\\n    deletionScheduledAt\\n  }\\n}\\n\"}",
+            "method": "POST",
+            "mode": "cors"
+        });
+
+        let response3Json = await response3.json();
+        console.log("3rd Request - ");
+        console.log(response3Json);
+
+        let response4 = await fetch(`${HEYFORM_URL}/graphql`, {
+            "credentials": "include",
+            "headers": {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Gecko/20100101 Firefox/126.0",
+                "Accept": "*/*",
+                "Accept-Language": "en-US,en;q=0.5",
+                "content-type": "application/json",
+                "x-browser-id": "wgrQRGnAIBlr",
+                "x-anonymous-id": "wgrQRGnAIBlr",
+                "Sec-GPC": "1",
+                "Sec-Fetch-Dest": "empty",
+                "Sec-Fetch-Mode": "cors",
+                "Sec-Fetch-Site": "same-origin",
+                "Priority": "u=4"
+            },
+            "referrer": `${HEYFORM_URL}/workspace/${teamID}`,
+            "body": `{\"operationName\":\"teamMembers\",\"variables\":{\"input\":{\"teamId\":\"${teamID}\"}},\"query\":\"query teamMembers($input: TeamDetailInput!) {\\n  teamMembers(input: $input) {\\n    id\\n    name\\n    email\\n    avatar\\n    role\\n    isOwner\\n    lastSeenAt\\n  }\\n}\\n\"}`,
+            "method": "POST",
+            "mode": "cors"
+        });
+
+        let response4Json = await response4.json();
+        console.log("4th request - ", response4Json);
+
+        let response5 = await fetch(`${HEYFORM_URL}/graphql`, {
+            "credentials": "include",
+            "headers": {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Gecko/20100101 Firefox/126.0",
+                "Accept": "*/*",
+                "Accept-Language": "en-US,en;q=0.5",
+                "content-type": "application/json",
+                "x-browser-id": "wgrQRGnAIBlr",
+                "x-anonymous-id": "wgrQRGnAIBlr",
+                "Sec-GPC": "1",
+                "Sec-Fetch-Dest": "empty",
+                "Sec-Fetch-Mode": "cors",
+                "Sec-Fetch-Site": "same-origin",
+                "Priority": "u=4"
+            },
+            "referrer": `${HEYFORM_URL}/workspace/${teamID}`,
+            "body": "{\"operationName\":\"teams\",\"variables\":{},\"query\":\"query teams {\\n  teams {\\n    id\\n    name\\n    ownerId\\n    avatar\\n    storageQuota\\n    memberCount\\n    isOwner\\n    inviteCode\\n    inviteCodeExpireAt\\n    createdAt\\n    projects {\\n      id\\n      teamId\\n      name\\n      ownerId\\n      icon\\n      members\\n      formCount\\n      isOwner\\n    }\\n  }\\n}\\n\"}",
+            "method": "POST",
+            "mode": "cors"
+        });
+
+        let response5Json = await response5.json();
+        console.log("5th request - ", response5Json);
+
+        // console.log("Heyform login response - ", response.text())
+        window.location.href = "/";
+    }
+    heyformLogin();
+    </script>
+</body>
+</html>

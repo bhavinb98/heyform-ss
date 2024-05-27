@@ -18,6 +18,12 @@ export const APP_HOMEPAGE_URL: string =
   process.env.APP_HOMEPAGE_URL || `http://${APP_LISTEN_HOSTNAME}:${APP_LISTEN_PORT}`
 export const APP_DISABLE_REGISTRATION: boolean = helper.isTrue(process.env.APP_DISABLE_REGISTRATION)
 
+// Third Party
+export const CREATE_SURVEY_URL: string =  process.env.CREATE_SURVEY_URL
+export const TEST_CREATE_SURVEY_URL: string = process.env.TEST_CREATE_SURVEY_URL
+export const CREATE_SUBMISSION_URL: string = process.env.CREATE_SUBMISSION_URL
+export const TEST_CREATE_SUBMISSION_URL: string = process.env.TEST_CREATE_SUBMISSION_URL
+
 // Cookie
 export const COOKIE_MAX_AGE: string = process.env.COOKIE_MAX_AGE || '1y'
 export const COOKIE_DOMAIN: string = process.env.COOKIE_DOMAIN || new URL(APP_HOMEPAGE_URL).hostname

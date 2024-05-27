@@ -36,11 +36,6 @@ export const HiddenFields = () => {
         <div className="flex items-center justify-between p-4">
           <h2 className="flex items-center gap-1">
             <span>{t('formBuilder.hiddenFields')}</span>
-            <Tooltip ariaLabel={t('formBuilder.hiddenFieldsTip')}>
-              <a href="https://docs.heyform.net/hidden-fields" target="_blank">
-                <IconHelp className="h-5 w-5 text-slate-400" />
-              </a>
-            </Tooltip>
           </h2>
           <Button.Link className="h-6 w-6" leading={<IconPlus />} onClick={openCreateHiddenField} />
         </div>

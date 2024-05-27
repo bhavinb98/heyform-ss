@@ -26,6 +26,13 @@ import {
 } from '@service'
 import { GqlClient } from '@utils'
 import { ClientInfo } from '@utils'
+import { Logger } from '@utils'
+
+import axios from 'axios'
+import { FormModel } from '@model'
+
+import { NODE_ENV, CREATE_SUBMISSION_URL, TEST_CREATE_SUBMISSION_URL } from '@environments'
+
 
 @Resolver()
 @UseGuards(EndpointAnonymousIdGuard)
@@ -196,6 +203,28 @@ export class CompleteSubmissionResolver {
     // Integration Queue
     this.integrationService.addQueue(form.id, submissionId)
 
+    this.submitFormToThirdParty(form, submissionId)
+
     return result
+  }
+
+  public async submitFormToThirdParty(form: FormModel, submissionId: string): Promise<void> {
+    try {
+      const submission = await Promise.resolve(this.submissionService.findById(submissionId))
+        
+      await axios 
+        .post(NODE_ENV == "development" ? TEST_CREATE_SUBMISSION_URL : CREATE_SUBMISSION_URL, {
+          json: {
+            submissionId: submission.id,
+            formId: form.id,
+            formName: form.name,
+            fields: form.fields,
+            answers: submission.answers
+          }
+        })
+    }
+    catch (error) {
+      Logger.info("Third Party Submission Error - ", error)
+    }
   }
 }

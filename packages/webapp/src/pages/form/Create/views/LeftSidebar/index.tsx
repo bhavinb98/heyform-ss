@@ -21,11 +21,11 @@ const LeftSidebarComponent = () => {
           <FieldList />
         </Panel>
 
-        <PanelResizeHandle className="border-t border-slate-200" />
+        {/* <PanelResizeHandle className="border-t border-slate-200" />
 
         <Panel defaultSize={20} maxSize={65}>
           <HiddenFields />
-        </Panel>
+        </Panel> */}
       </PanelGroup>
     </div>
   )

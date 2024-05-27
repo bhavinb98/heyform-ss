@@ -194,10 +194,10 @@ const Project = observer(() => {
             overlay={
               <Menus onClick={handleClick}>
                 <Menus.Item value="edit" icon={<IconEdit />} label={t('project.edit')} />
-                <Menus.Item value="duplicate" icon={<IconCopy />} label={t('project.dup')} />
                 <Menus.Item value="rename" icon={<IconPencil />} label={t('project.rename')} />
                 <Menus.Item value="delete" icon={<IconTrash />} label={t('project.del')} />
               </Menus>
+              // <Menus.Item value="duplicate" icon={<IconCopy />} label={t('project.dup')} />
             }
           >
             <IconDots className="h-5 w-5" />
